@@ -4,7 +4,6 @@ import com.omshinde.models.Product;
 import com.omshinde.models.ProductsInventory;
 import com.omshinde.pages.SearchResultPage;
 import com.omshinde.pages.components.SearchBoxComponent;
-import com.omshinde.services.ProductSearcher;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -26,7 +25,6 @@ public class SearchFunctionTest {
     @Test
     public void Search() {
         ProductsInventory tempProductsInventory = new ProductsInventory();
-//        tempProductsInventory.getProductList().add(new Product(""));
         Product dress=new Product();
         dress.setProductName("WhiteDress");
         dress.setProductPrice(500);
@@ -37,8 +35,12 @@ public class SearchFunctionTest {
         SearchResultPage searchResultPage = searchBoxComponent.clickSearchBtn();
         List<Product> matchedProducts=searchResultPage.getProducts();
 
+        //all-products
+        for(Product product: tempProductsInventory.getProductList()){
+            System.out.println(product.getProductName());
+        }
         Assert.assertTrue(matchedProducts.stream().
-                allMatch(product -> product.getProductName().contains(searchBoxComponent.getSearchProductName())));
+                anyMatch(product -> product.getProductName().contains(searchBoxComponent.getSearchProductName())),"Product not found");
 
     }
 

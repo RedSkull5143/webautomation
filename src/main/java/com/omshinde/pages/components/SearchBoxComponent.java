@@ -14,11 +14,9 @@ public class SearchBoxComponent {
     private String searchBtn;
     private ProductsInventory productsInventory;
 
+    public void search(String query){
 
-    public SearchBoxComponent(ProductsInventory productsInventory) {
-        this.productsInventory = productsInventory;
     }
-
     public String getSearchProductName() {
         return searchProductName;
     }
