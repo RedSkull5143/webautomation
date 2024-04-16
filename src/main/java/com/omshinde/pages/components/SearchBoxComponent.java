@@ -14,9 +14,7 @@ public class SearchBoxComponent {
     private String searchBtn;
     private ProductsInventory productsInventory;
 
-    public void search(String query){
 
-    }
     public String getSearchProductName() {
         return searchProductName;
     }
@@ -47,10 +45,32 @@ public class SearchBoxComponent {
     }
 
     //search product
-    public SearchResultPage clickSearchBtn() {
-        List<Product> matchedProducts=productsInventory.getProductList().stream()
-                .filter(product -> product.getProductName().contains(searchProductName))
+//    public SearchResultPage clickSearchBtn() {
+//        List<Product> matchedProducts=productsInventory.getProductList().stream()
+//                .filter(product -> product.getProductName().contains(searchProductName))
+//                .collect(Collectors.toList());
+//
+//        return new SearchResultPage(matchedProducts);
+//    }
+    public SearchResultPage search(String query) {
+        // Ensure that a query is provided
+        if (query == null || query.isEmpty()) {
+            System.out.println("Please provide a valid search query.");
+            return null;
+        }
+
+        // Ensure that productsInventory is not null
+        if (productsInventory == null) {
+            System.out.println("Products inventory is not initialized.");
+            return null;
+        }
+
+        // Filter products based on the search query
+        List<Product> matchedProducts = productsInventory.getProductList().stream()
+                .filter(product -> product.getProductName().contains(query))
                 .collect(Collectors.toList());
 
+        // Return SearchResultPage containing matched products
         return new SearchResultPage(matchedProducts);
-    }}
+    }
+}

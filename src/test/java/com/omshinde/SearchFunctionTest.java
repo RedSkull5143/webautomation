@@ -30,7 +30,7 @@ public class SearchFunctionTest {
         dress.setProductPrice(500);
 
         tempProductsInventory.getProductList().add(dress);
-        SearchBoxComponent searchBoxComponent = new SearchBoxComponent(tempProductsInventory);
+        SearchBoxComponent searchBoxComponent = new SearchBoxComponent();
         searchBoxComponent.setSearchProductName("WhiteDress");
         SearchResultPage searchResultPage = searchBoxComponent.clickSearchBtn();
         List<Product> matchedProducts=searchResultPage.getProducts();
