@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class UserLoginTest {
+public class UserLoginTest extends  BaseTest {
 
     @Test(testName = "User Login Test")
     public void testUserLogin(){
@@ -22,7 +22,7 @@ public class UserLoginTest {
         //read the Credentials from the json
         //arrange
         User user=new User();
-        LoginPage loginPage=new LoginPage();
+        LoginPage loginPage=new LoginPage(driver);
 
         //act
         //loginPage.enterEmail(user.getEmail());
@@ -49,7 +49,7 @@ public class UserLoginTest {
         Address address=new Address();
         User user=new User();
         user.addAddress(address);
-        LoginPage loginPage=new LoginPage();
+        LoginPage loginPage=new LoginPage(driver);
 
         //act
         //loginPage.enterEmail(user.getEmail());
@@ -78,7 +78,7 @@ public class UserLoginTest {
         Address address=new Address();
         User user=new User();
         user.addAddress(address);
-        LoginPage loginPage=new LoginPage();
+        LoginPage loginPage=new LoginPage(driver);
 
         //act
         //loginPage.enterEmail(user.getEmail());
@@ -101,5 +101,8 @@ public class UserLoginTest {
         //verify user is able to open dashboard
         Assert.assertTrue(userAddressList.contains(address));
     }
+
+    //using WebDriver
+
 
 }

@@ -1,8 +1,9 @@
 package com.omshinde.pages;
 
 import com.omshinde.models.User;
+import org.openqa.selenium.WebDriver;
 
-public class ProfilePage {
+public class ProfilePage extends BasePage {
     private String accountLabel;
     private String logOutBtn;
     private String orderHistory;
@@ -11,9 +12,13 @@ public class ProfilePage {
     private String userCountry;
     private String viewAddress;
 
+    public ProfilePage(WebDriver driver) {
+        super(driver);
+    }
+
     public LoginPage clickLogOut(){
         //logout
-        return new LoginPage();
+        return new LoginPage(driver);
     }
 
     public void viewOrderHistory(){
@@ -27,7 +32,7 @@ public class ProfilePage {
 
     public AddressPage clickViewAddress(){
         //redirect to view address
-        return new AddressPage();
+        return new AddressPage(driver);
     }
 
 }
